@@ -25,3 +25,22 @@ menu_relatorios(): Lista os emprestimos em andamento e devoluções em atraso.
 relatorio_emprestimos_ativos(): lista todos os emprestimos em andamento e data de devolução prevista.
 relatorio_atrasos(): Mostra os emprestimos que estão atrasados no sistema.
 menu_gerenciar_tempo(): Permite avançar o tempo no sistema simulando dias passados para controle de prazos e atrasos.
+
+Quando um usuário solicita um empréstimo, o sistema primeiro verifica se ele existe, se o livro está cadastrado e se há exemplares disponíveis. 
+Depois disso, ele define o prazo de devolução com base no tipo do usuário: Aluno ou professor.
+Se for aluno, 7 dias de prazo. Se for professor, 10 dias de prazo.
+Esse prazo é calculado somando o valor atual do dia_atual_sistema ao número de dias permitidos. Assim, o sistema registra dois dados importantes:
+O dia do empréstimo que é o dia atual. E o dia da devolução prevista, baseado no tipo de usuário.
+
+No empréstimo, o sistema verifica se o livro e o usuário existem e se há exemplar disponível. Depois, define o prazo: 7 dias para aluno e 10 para professor, somando ao dia atual do sistema.
+Na devolução, registra o dia da entrega e, se houver atraso, calcula a multa com base nos dias de atraso, cobrando 1 real por dia.
+Tudo é feito com um contador de dias, sem usar datas reais, e o tempo é avançado manualmente pelo usuário.
+
+O sistema compara o dia da devolução com o prazo previsto. Se o livro for devolvido no prazo, não há multa.
+Se houver atraso, calcula quantos dias passaram do prazo. Depois, multiplica esse atraso por R$ 1,00 por dia.
+O valor final da multa é mostrado ao usuário na hora da devolução. Tudo isso é feito com base no dia simulado, sem usar datas reais.
+O tempo no sistema é controlado por um contador que o usuário avança manualmente.
+
+O sistema  usa um contador chamado dia_atual_sistema. Esse contador começa no dia 1. O usuário pode avançar os dias manualmente.
+Isso é feito no menu de gerenciamento de tempo. Com isso, dá para simular o passar dos dias facilmente. Isso facilita testes, prazos e cálculo de multas no sistema.
+
